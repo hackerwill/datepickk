@@ -7,6 +7,22 @@
 	<link rel="stylesheet" href="dist/datepickk.min.css">
 	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/zenburn.min.css">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+	<style>
+		.redDate{
+			border : 1.5px solid red;
+			border-radius : 50%;
+			text-align : center;
+			padding : 5px;
+			width : 40%;
+		}
+		.greenDate{
+			border : 1.5px solid black;
+			border-radius : 50%;
+			text-align : center;
+			padding : 5px;
+			width : 40%;
+		}
+	</style>
 </head>
 <body>
 	<script src="dist/datepickk.min.js"></script>
@@ -66,18 +82,35 @@
 					var demoPicker = new Datepickk({
 						container: document.querySelector('#demoPicker'),
 						inline:true,
-						range: true,
+						range: false,
+						lang : "zh_TW",
 						tooltips: {
 							date: new Date(),
 							text: 'Tooltip'
 						},
-						highlight:{
-							start: new Date(now.getFullYear(),now.getMonth(),3),
-							end: new Date(now.getFullYear(),now.getMonth(),6),
-							backgroundColor:'#05676E',
-							color:'#fff',
-							legend: 'Highlight'
-						}
+						highlight:[
+						{
+							dates: [
+								{
+								start: new Date(now.getFullYear(),now.getMonth(),7),
+								end: new Date(now.getFullYear(),now.getMonth(),7)
+								},
+								{
+								start: new Date(now.getFullYear(),now.getMonth(),14),
+								end: new Date(now.getFullYear(),now.getMonth(),14)
+								}
+							],
+							legend: 'Highlight',
+							circleClassName : "redDate",
+							color : "#BBB"
+						},
+						{
+							start: new Date(now.getFullYear(),now.getMonth(),1),
+							end: new Date(now.getFullYear(),now.getMonth(),3),
+							legend: 'Highlight2',
+							circleClassName : "greenDate"
+						}],
+						disabledDates : [new Date(now.getFullYear(),now.getMonth(),1)]
 					});
 				</script>
 			</div>

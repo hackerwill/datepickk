@@ -101,14 +101,13 @@
 						label.setAttribute("for",Datepickk.numInstances + '-' + x + '-d-day-' + i);
 
 					var text = document.createElement('text');
-
+					
 					var tooltip = document.createElement('span');
 						tooltip.setAttribute('class','d-tooltip');
 
 
 					container.appendChild(input);
 					container.appendChild(label);
-
 					label.appendChild(text);
 					label.appendChild(tooltip);
 
@@ -165,6 +164,7 @@
 				return false;
 			});
 			var legends = [];
+			
 			for(var l = 0;l<_highlights.length;l++){
 				if('legend' in _highlights[l] && _highlights[l].legend){
 					var oldLegend = container.querySelector('.d-legend-item[data-legend="' + _highlights[l].legend + '"][data-color="' + _highlights[l].backgroundColor + '"]');
@@ -176,7 +176,8 @@
 							legendItem.setAttribute('data-color',_highlights[l].backgroundColor);
 						var legendItemPoint = document.createElement('span');
 							legendItemPoint.setAttribute('style','background-color:' + _highlights[l].backgroundColor);
-
+						if(_highlights[l].circleClassName)
+							addClass(legendItemPoint, _highlights[l].circleClassName);
 						legendItem.appendChild(legendItemPoint);
 
 						that.el.legend.appendChild(legendItem);
@@ -203,6 +204,41 @@
 					else element.classList.remove('legend-hover');				
 				});
 			}
+		}
+		
+		function setCircleClassName(){
+			removeAllDayTextClass();
+			
+			var start = new Date(that.el.tables.childNodes[0].childNodes[0].getAttribute('data-date'));
+			var end = new Date(that.el.tables.childNodes[months-1].childNodes[82].getAttribute('data-date'));
+			var _highlights = highlight.filter(function(x){
+				for(var m = 0;m < x.dates.length;m++){
+					if(x.dates[m].start < end && x.dates[m].end > start 
+						&& x.circleClassName){
+						return true;
+					}
+				}
+				return false;
+			});
+			
+			[].slice.call(that.el.querySelectorAll('.d-table input')).forEach(function(inputEl, index) {
+				var date = new Date(inputEl.getAttribute("data-date"));
+				_highlights.forEach(function(_highlightEl){
+					_highlightEl.dates.forEach(function(dateEl){
+						if(dateEl.start <= date && dateEl.end >= date){
+							var labelEl = inputEl.nextSibling;
+							var textEl = labelEl.querySelector('text');
+							addClass(textEl, _highlightEl.circleClassName);
+						}
+					});
+				});
+			});
+		}
+		
+		function removeAllDayTextClass(){
+			[].slice.call(that.el.querySelectorAll('.d-table text')).forEach(function(textEl, index) {
+				textEl.className = '';
+			});
 		}
 
 		function parseMonth(month){
@@ -332,6 +368,7 @@
 			});
 
 			generateLegends();
+			setCircleClassName();
 		};
 
 		function setDate(){
@@ -853,7 +890,8 @@
 								highlightObj.color 				= hl.color;
 								highlightObj.backgroundColor 	= hl.backgroundColor;
 								highlightObj.legend				= ('legend' in hl)?hl.legend:null;
-
+								highlightObj.circleClassName 	= hl.circleClassName;
+								
 								highlight.push(highlightObj);
 							}
 						});
@@ -1107,6 +1145,19 @@
 
 		return Object.freeze(that);
 	};
+	
+	function addClass(element, className){
+		var name = element.className ? element.className : '';
+		if(!isMatch(name, className)){
+			name = name.concat(name.legnth ? ' ' : '', className);
+		}
+		element.className = name;
+	}
+	
+	function isMatch(str, compare){
+		var regExp = new RegExp('^' + compare + '$');
+		return regExp.test(str);
+	}
 
 	function whichAnimationEvent(){
 	    var t;
