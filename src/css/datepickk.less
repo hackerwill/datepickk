@@ -1,5 +1,5 @@
 /*Main color*/
-@color: #E95A5A; //change if you want different theme
+@color: #FFF; //change if you want different theme
 
 @spin: -15;
 
@@ -343,6 +343,11 @@
 			height: 44px;
 			opacity: 1;
 			pointer-events: auto;
+
+      & > div.current{
+        background-color: spin(@color,25);
+        color:contrast(spin(@color,25),black,white);
+      }
 		}
 
 		& > div{
@@ -355,11 +360,6 @@
 			&:hover,&:focus{
 				background-color: darken(@color,10%);
 				color:contrast(darken(@color,10%),black,white);
-			}
-
-			&.current{
-				background-color: spin(@color,25);
-				color:contrast(spin(@color,25),black,white);
 			}
 		}
 	}
@@ -377,6 +377,11 @@
 			height: 44px;
 			opacity: 1;
 			pointer-events: auto;
+
+      & > div.current{
+        background-color: spin(@color,25);
+        color:contrast(spin(@color,25),black,white);
+      }
 		}
 
 		& > div{
@@ -389,11 +394,6 @@
 			&:hover,&:focus{
 				background-color: darken(@color,10%);
 				color:contrast(darken(@color,10%),black,white);
-			}
-
-			&.current{
-				background-color: spin(@color,25);
-				color:contrast(spin(@color,25),black,white);
 			}
 		}
 	}

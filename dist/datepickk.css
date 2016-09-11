@@ -349,6 +349,10 @@
   opacity: 1;
   pointer-events: auto;
 }
+#Datepickk .d-month-picker.d-show > div.current {
+  background-color: #ffffff;
+  color: black;
+}
 #Datepickk .d-month-picker > div {
   width: calc(100% / 12);
   text-align: center;
@@ -358,12 +362,8 @@
 }
 #Datepickk .d-month-picker > div:hover,
 #Datepickk .d-month-picker > div:focus {
-  background-color: #e32d2d;
-  color: white;
-}
-#Datepickk .d-month-picker > div.current {
-  background-color: #e9965a;
-  color: white;
+  background-color: #e6e6e6;
+  color: black;
 }
 #Datepickk .d-year-picker {
   display: -webkit-flex;
@@ -383,6 +383,10 @@
   opacity: 1;
   pointer-events: auto;
 }
+#Datepickk .d-year-picker.d-show > div.current {
+  background-color: #ffffff;
+  color: black;
+}
 #Datepickk .d-year-picker > div {
   width: calc(100% / 11);
   text-align: center;
@@ -392,12 +396,8 @@
 }
 #Datepickk .d-year-picker > div:hover,
 #Datepickk .d-year-picker > div:focus {
-  background-color: #e32d2d;
-  color: white;
-}
-#Datepickk .d-year-picker > div.current {
-  background-color: #e9965a;
-  color: white;
+  background-color: #e6e6e6;
+  color: black;
 }
 #Datepickk .d-weekdays {
   display: -webkit-flex;
@@ -405,8 +405,8 @@
   display: flex;
 }
 #Datepickk .d-week {
-  background-color: #E95A5A;
-  color: white;
+  background-color: #FFF;
+  color: black;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -493,7 +493,7 @@
   content: '';
   width: 100%;
   height: 2px;
-  background-color: #E95A5A;
+  background-color: #FFF;
   position: absolute;
   bottom: -5px;
   left: 0;
@@ -505,7 +505,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(233, 90, 126, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
   transition: -webkit-transform 0.1s ease-out;
   transition: transform 0.1s ease-out;
   -webkit-transform: scaleX(0);
@@ -591,7 +591,7 @@
   display: block;
 }
 #Datepickk .d-table input:checked + label {
-  color: white;
+  color: #666;
 }
 #Datepickk .d-table input:checked + label:before {
   -webkit-transform: scaleX(1);
@@ -642,15 +642,15 @@
   cursor: default;
 }
 #Datepickk .d-tables.range:not(.before) input:not(.single):checked + label {
-  color: white;
+  color: #222;
 }
 #Datepickk .d-tables.range:not(.before) input:not(.single):checked + label ~ label:not(.hidden) {
-  color: white;
+  color: #222;
 }
 #Datepickk .d-tables.range:not(.before) input:not(.single):checked + label ~ label:not(.hidden):before {
   -webkit-transform: scaleX(1);
           transform: scaleX(1);
-  background-color: rgba(233, 90, 126, 0.3);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 #Datepickk .d-tables.range:not(.before) input:not(.single):checked ~ label:hover ~ label,
 #Datepickk .d-tables.range:not(.before) input:not(.single):checked ~ label:focus ~ label {
@@ -665,41 +665,41 @@
 #Datepickk .d-tables.range:not(.before) input:not(.single):checked ~ label:focus ~ label.next,
 #Datepickk .d-tables.range:not(.before) input:not(.single):checked ~ label:hover ~ label.prev,
 #Datepickk .d-tables.range:not(.before) input:not(.single):checked ~ label:focus ~ label.prev {
-  color: #ccc;
+  color: #222;
 }
 #Datepickk .d-tables.range:not(.before) input:not(.single):checked ~ input:checked + label {
-  color: white;
+  color: #666;
 }
 #Datepickk .d-tables.range:not(.before) input:not(.single):checked ~ input:checked + label:before {
   -webkit-transform: scaleX(1);
           transform: scaleX(1);
-  background-color: rgba(233, 90, 126, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 #Datepickk .d-tables.range:not(.before) input:not(.single):checked ~ input:checked + label ~ label {
   color: inherit;
 }
 #Datepickk .d-tables.range:not(.before) input:not(.single):checked ~ input:checked + label ~ label.next,
 #Datepickk .d-tables.range:not(.before) input:not(.single):checked ~ input:checked + label ~ label.prev {
-  color: #ccc;
+  color: #222;
 }
 #Datepickk .d-tables.range:not(.before) input:not(.single):checked ~ input:checked + label ~ label:before {
   -webkit-transform: scaleX(0);
           transform: scaleX(0);
 }
 #Datepickk .d-tables.range.before input:not(.single):not(:checked) + label {
-  color: white;
+  color: #666;
 }
 #Datepickk .d-tables.range.before input:not(.single):not(:checked) + label:before {
   -webkit-transform: scaleX(1);
           transform: scaleX(1);
-  background-color: rgba(233, 90, 126, 0.3);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 #Datepickk .d-tables.range.before input:not(.single):checked + label ~ label {
   color: inherit;
 }
 #Datepickk .d-tables.range.before input:not(.single):checked + label ~ label.next,
 #Datepickk .d-tables.range.before input:not(.single):checked + label ~ label.prev {
-  color: #ccc;
+  color: #222;
 }
 #Datepickk .d-tables.range.before input:not(.single):checked + label ~ label:before {
   -webkit-transform: scaleX(0);

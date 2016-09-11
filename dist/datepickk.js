@@ -426,9 +426,9 @@
 				}
 				endmonth += languages[lang].monthNames[monthint];
 			}
-			var yearname = (currentMonth-1+months-1 > 11)?currentYear.toString().substring(2,4) + '/' + (currentYear + 1).toString().substring(2,4):currentYear.toString().substring(2,4);
-			that.el.header.childNodes[1].childNodes[0].innerHTML = startmonth + endmonth;
-			that.el.header.childNodes[1].childNodes[1].innerHTML = yearname;
+			var yearname = (currentMonth-1+months-1 > 11)?currentYear.toString().substring(0,4) + '/' + (currentYear + 1).toString().substring(0,4):currentYear.toString().substring(0,4);
+			that.el.header.childNodes[1].childNodes[1].innerHTML = startmonth + endmonth;
+			that.el.header.childNodes[1].childNodes[0].innerHTML = yearname;
 
 			that.el.yearPicker.querySelector('[data-year="0"]').classList.add('current');
 			if(currentMonth-1+months-1>11){
@@ -613,7 +613,7 @@
 		function bindEvents(){
 			that.el.header.childNodes[0].addEventListener(eventName,prevMonth);
 			that.el.header.childNodes[2].addEventListener(eventName,nextMonth);
-			that.el.header.childNodes[1].childNodes[0].addEventListener(eventName,function(){
+			that.el.header.childNodes[1].childNodes[1].addEventListener(eventName,function(){
 				if(that.el.monthPicker.classList.contains('d-show')){
 					that.el.monthPicker.classList.remove('d-show');
 				}else{
@@ -621,7 +621,7 @@
 				}
 				that.el.yearPicker.classList.remove('d-show');
 			});
-			that.el.header.childNodes[1].childNodes[1].addEventListener(eventName,function(){
+			that.el.header.childNodes[1].childNodes[0].addEventListener(eventName,function(){
 				generateYears();
 				if(that.el.yearPicker.classList.contains('d-show')){
 					that.el.yearPicker.classList.remove('d-show');
@@ -1181,7 +1181,7 @@
 					'<div class="d-calendar">' +
 						'<div class="d-header">' +
 							'<i id="d-previous"></i>' +
-							'<p><span class="d-month"></span><span class="d-year"></span></p>' +
+							'<p><span class="d-year"></span><span class="d-month"></span></p>' +
 							'<i id="d-next"></i>' +
 						'</div>' +
 						'<div class="d-month-picker">' +
